@@ -7,15 +7,15 @@ import android.widget.ListView
 import androidx.fragment.app.ListFragment
 
 class ArrayListFragment : ListFragment() {
-    companion object {
-        private val NUMBERS: ArrayList<String> =
-            arrayListOf("1", "2", "3", "4", "5", "6", "7", "8", "9")
+
+    private fun getList(): ArrayList<String>{
+        return arguments!!.getStringArrayList("numbers")!!
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         listAdapter =
-            ArrayAdapter(activity!!, android.R.layout.simple_list_item_activated_1, NUMBERS)
+            ArrayAdapter(activity!!, android.R.layout.simple_list_item_activated_1, getList())
         listView.choiceMode = ListView.CHOICE_MODE_SINGLE
     }
 
