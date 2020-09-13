@@ -2,8 +2,9 @@ package com.practice.demofragment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemSelectedListener {
 
     private val arrayListFragment by lazy { ArrayListFragment() }
 
@@ -19,5 +20,9 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.container_main_fragment, arrayListFragment)
             .commit()
+    }
+
+   override fun onSelectedItem(position: Int) {
+        Toast.makeText(this, "$position", Toast.LENGTH_SHORT).show()
     }
 }
